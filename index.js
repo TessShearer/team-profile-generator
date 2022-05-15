@@ -21,6 +21,17 @@ function createTeam() {
 
 )};
 
+inquirer.prompt(
+  createTeam()
+).then(function(response){
+  let manager = new Manager('dave');
+  inquirer.prompt({
+   message: 'Do you want to add an employee at this time?',
+   name:'continue',
+   type:'confirm'
+    }).then
+})
+
 createTeam()
 // .then(teamData => {
 //   return generateSite/pageTemplate(teamData);

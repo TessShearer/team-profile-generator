@@ -31,3 +31,5 @@ const writeFile = fileContent => {
   };
 
   module.exports = { writeFile, copyFile };
+
+//   Pretty sure this will make the html file that is needed for the site and then tell the command line that that happened
