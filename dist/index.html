@@ -1,15 +1,4 @@
-const pageTemplate = teamData => {
-
-    let cards = '';
-
-    for(employee of teamData){
-        cards=`
-        PUT HTML HERE
-        `
-    }
-
-    let finalHTML = 
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -32,7 +21,9 @@ const pageTemplate = teamData => {
 <p class="role">${getRole}</p>
         </div>
         <div class="card-body">
-
+<p class="id">${getId}</p>
+<p class="email">${getEmail}</p>
+<p class="other">Other</p>
         </div>
     </div>
 </div>
@@ -41,10 +32,4 @@ const pageTemplate = teamData => {
 <footer>
 </footer>
 
-</html>`
-
-return finalHTML;
-}
-
-module.exports = pageTemplate
-
+</html>

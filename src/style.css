@@ -1,0 +1,63 @@
+header {
+    height: 100px;
+    background-color: rgb(85, 132, 186);
+    text-align: center;
+    border-color: rgb(26, 75, 131);
+    border-width: 3px;
+    border-style: solid;
+}
+
+.team {
+    margin: auto;
+    padding: 20px;
+    font-size: 50px;
+}
+
+body {
+    background-color: rgb(196, 212, 230);
+    border-color: rgb(26, 75, 131);
+    border-width: 3px;
+    border-style: solid;
+}
+
+footer {
+    height: 80px;
+    background-color: rgb(85, 132, 186);
+    border-color: rgb(26, 75, 131);
+    border-width: 3px;
+    border-style: solid;
+}
+
+.card-box {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.card {
+    width: 180px;
+    margin: 30px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.card-header {
+    height: 80px;
+    background-color: rgb(85, 132, 186);
+    border-color: rgb(26, 75, 131);
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-body {
+    height: 140px;
+    background-color: white;
+    padding-top: 5px;
+}
+
+.class {
+    height:fit-content;
+}
