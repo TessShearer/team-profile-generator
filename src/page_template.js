@@ -1,15 +1,26 @@
 const pageTemplate = teamData => {
 
-    let cards = '';
+    cards = [];
 
-    for(employee of teamData){
-        cards=`
-        PUT HTML HERE
+    for (employee of teamData) {
+        card = `
+        <div class="card">
+        <div class="card-header">
+<p class="name">${employee.getName()}</p>
+<p class="role">${employee.getRole()}</p>
+        </div>
+        <div class="card-body">
+<p class="id">${employee.getId()}</p>
+<p class="email">${employee.getEmail()}</p>
+<p class="other">Other</p>
+        </div>
+    </div>
         `
+        cards.push(card);
     }
 
-    let finalHTML = 
-`<!DOCTYPE html>
+    let finalHTML =
+        `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,15 +37,7 @@ const pageTemplate = teamData => {
 
 <body>
 <div class="card-box">
-    <div class="card">
-        <div class="card-header">
-<p class="name">${getName}</p>
-<p class="role">${getRole}</p>
-        </div>
-        <div class="card-body">
-
-        </div>
-    </div>
+    ${cards}
 </div>
 </body>
 
@@ -43,7 +46,7 @@ const pageTemplate = teamData => {
 
 </html>`
 
-return finalHTML;
+    return finalHTML;
 }
 
 module.exports = pageTemplate

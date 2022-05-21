@@ -1,7 +1,10 @@
 const inquirer = require('inquirer');
-const { writeFile, copyFile } = require('./utils/generate-site.js');
+const {writeFile} = require('./utils/generate-site.js');
 const employeeArray = [];
 const pageTemplate = require('./src/page_template');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
 
 // Creates card for first manager
 function createTeam() {
@@ -26,20 +29,12 @@ function createTeam() {
       name: `office`,
       message: `What is your office number?`
     }])
-    .then(function (answer) {
-      const teamLeader = {
-        name: answer.name,
-        id: answer.id,
-        email: answer.email,
-        title: "Manager",
-        office: answer.office,
-      }
-      employeeArray.push(teamLeader);
+    .then(function(response) {
+      employeeArray.push(new Manager(response.name, response.id, response.email, response.office));
       expandTeam();
     }
     )
-};
-
+}
 
 // Asks if the manager would like to add more team members, then allows that or creates the page
 function expandTeam() {
@@ -52,13 +47,11 @@ function expandTeam() {
       addEmployee();
     }
     else {
-      createPage();
+      createPage(employeeArray);
     }
   })
-
-
   // answer.continue?addEmployee():createPage();
-};
+}
 
 
 // These three functions ask the questions unique to the different types of employees after the addEmployee function is done
@@ -70,17 +63,10 @@ function addEngineer(answer) {
       message: `What is the engineer's github username?`
     }
   ]).then(function(response) {
-    const newEngineer = {
-      name: answer.name,
-      id: answer.id,
-      email: answer.email,
-      title: "Engineer",
-      github: response.github,
-    }
-    employeeArray.push(newEngineer);
+    employeeArray.push(new Engineer(answer.name, answer.id, answer.email, response.github));
     expandTeam();
 });
-};
+}
 
 function addIntern(answer) {
   inquirer.prompt([
@@ -90,17 +76,10 @@ function addIntern(answer) {
       message: `What is the name of the intern's school?`
     }
   ]).then(function(response) {
-    const newIntern = {
-      name: answer.name,
-      id: answer.id,
-      email: answer.email,
-      title: "Intern",
-      school: response.school,
-    }
-    employeeArray.push(newIntern);
+    employeeArray.push(new Intern(answer.name, answer.id, answer.email, response.school));
     expandTeam();
 });
-};
+}
 
 function addManager(answer) {
   inquirer.prompt([
@@ -110,17 +89,10 @@ function addManager(answer) {
       message: `What is the manager's office number?`
     }
   ]).then(function(response) {
-    const newManager = {
-      name: answer.name,
-      id: answer.id,
-      email: answer.email,
-      title: "Manager",
-      office: response.office,
-    }
-    employeeArray.push(newManager);
+    employeeArray.push(new Manager(answer.name, answer.id, answer.email, response.office));
     expandTeam();
 });
-};
+}
 
 // Adds a new employee if the expandTeam function calls it
 function addEmployee() {
@@ -157,12 +129,15 @@ function addEmployee() {
     addManager(answer);
   }
 });
-};
+}
 
 
 // Function call that starts the team creation process
 createTeam();
 
 function createPage(data){
- writeFile(employeeArray);
+ writeFile(data)
+ .then(writeFileResponse => {
+  console.log(writeFileResponse);
+});
 }
