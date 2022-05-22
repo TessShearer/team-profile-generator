@@ -21,7 +21,7 @@
 # Usage
   This project is run through node in the command line. It's called through node index.js, and then the user answers the provided prompts.
 
-  Visit the finished product here: https://tessshearer.github.io/team-profile-generator/
+  See a video of the functioning product here: https://drive.google.com/file/d/1bgm-RRwTKAiSdCoWg0_YgIGehrqs_Vht/view
 
 # License
   This project remains unlicensed.
