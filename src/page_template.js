@@ -12,7 +12,7 @@ const pageTemplate = teamData => {
         <div class="card-body">
 <p class="id">${employee.getId()}</p>
 <p class="email">${employee.getEmail()}</p>
-<p class="other">Other</p>
+<p class="other">${employee.getOther()}</p>
         </div>
     </div>
         `
@@ -37,7 +37,7 @@ const pageTemplate = teamData => {
 
 <body>
 <div class="card-box">
-    ${cards}
+    ${cards.join("")}
 </div>
 </body>
 

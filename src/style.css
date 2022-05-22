@@ -35,11 +35,12 @@ justify-content: center;
 }
 
 .card {
-    width: 180px;
+    width: 200px;
     margin: 30px;
     border-width: 5px;
     border-style: solid;
     border-radius: 5px;
+    text-align: center;
 }
 
 .card-header {
